@@ -1,0 +1,19 @@
+Package: shadowsocks-libev
+Version: 3.2.0-1
+Architecture: amd64
+Maintainer: Roger Shimizu <rogershimizu@gmail.com>
+Installed-Size: 857
+Depends: apg | pwgen, libcap2-bin, lsb-base (>= 3.0-6), init-system-helpers (>= 1.18~), libc-ares2 (>= 1.11.0~rc1), libc6 (>= 2.14), libev4 (>= 1:4.04), libmbedcrypto0 (>= 2.0), libpcre3, libsodium23 (>= 1.0.12)
+Suggests: haveged, kcptun, simple-obfs
+Breaks: shadowsocks (<< 1.5.3-2)
+Replaces: shadowsocks (<< 1.5.3-2)
+Section: net
+Priority: optional
+Homepage: https://www.shadowsocks.org
+Description: lightweight and secure socks5 proxy
+ Shadowsocks-libev is a lightweight and secure socks5 proxy for
+ embedded devices and low end boxes.
+ .
+ Shadowsocks-libev was inspired by Shadowsock (in Python). It's rewritten
+ in pure C and only depends on libev, mbedTLS and a few other tiny
+ libraries.

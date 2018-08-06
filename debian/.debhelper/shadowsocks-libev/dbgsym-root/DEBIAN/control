@@ -1,0 +1,13 @@
+Package: shadowsocks-libev-dbgsym
+Source: shadowsocks-libev
+Version: 3.2.0-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Roger Shimizu <rogershimizu@gmail.com>
+Installed-Size: 1070
+Depends: shadowsocks-libev (= 3.2.0-1)
+Section: debug
+Priority: extra
+Homepage: https://www.shadowsocks.org
+Description: Debug symbols for shadowsocks-libev
+Build-Ids: 1d9fc90b77ceb6e25fbab2efac0f9f23b3b0ed1f 8454cc64612380770ab65b597ebcd7c7a0af4986 aff780ce411103c6fb8cc959b85fdf85fafccdc0 bcc3cf363d5da892a75be896979273232800cb51 cca7adb67464963f0b9e8bb4b3e5b8ece88cc288

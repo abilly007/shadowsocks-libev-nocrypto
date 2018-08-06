@@ -159,7 +159,8 @@ am__DEPENDENCIES_3 = $(am__DEPENDENCIES_2)
 libshadowsocks_libev_la_DEPENDENCIES = $(am__DEPENDENCIES_3)
 am__libshadowsocks_libev_la_SOURCES_DIST = local.c utils.c jconf.c \
 	json.c udprelay.c cache.c netutils.c winsock.c crypto.c aead.c \
-	stream.c ppbloom.c base64.c plugin.c http.c tls.c rule.c acl.c
+	stream.c ppbloom.c base64.c noencrypt.c plugin.c http.c tls.c \
+	rule.c acl.c
 @BUILD_WINCOMPAT_TRUE@am__objects_1 =  \
 @BUILD_WINCOMPAT_TRUE@	libshadowsocks_libev_la-winsock.lo
 am__objects_2 = libshadowsocks_libev_la-utils.lo \
@@ -172,7 +173,8 @@ am__objects_3 = libshadowsocks_libev_la-crypto.lo \
 	libshadowsocks_libev_la-aead.lo \
 	libshadowsocks_libev_la-stream.lo \
 	libshadowsocks_libev_la-ppbloom.lo \
-	libshadowsocks_libev_la-base64.lo
+	libshadowsocks_libev_la-base64.lo \
+	libshadowsocks_libev_la-noencrypt.lo
 am__objects_4 = libshadowsocks_libev_la-plugin.lo
 am__objects_5 = libshadowsocks_libev_la-http.lo \
 	libshadowsocks_libev_la-tls.lo
@@ -197,7 +199,8 @@ libshadowsocks_libev_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 PROGRAMS = $(bin_PROGRAMS)
 am__ss_local_SOURCES_DIST = local.c utils.c jconf.c json.c udprelay.c \
 	cache.c netutils.c winsock.c crypto.c aead.c stream.c \
-	ppbloom.c base64.c plugin.c http.c tls.c rule.c acl.c
+	ppbloom.c base64.c noencrypt.c plugin.c http.c tls.c rule.c \
+	acl.c
 @BUILD_WINCOMPAT_TRUE@am__objects_8 = ss_local-winsock.$(OBJEXT)
 am__objects_9 = ss_local-utils.$(OBJEXT) ss_local-jconf.$(OBJEXT) \
 	ss_local-json.$(OBJEXT) ss_local-udprelay.$(OBJEXT) \
@@ -205,7 +208,7 @@ am__objects_9 = ss_local-utils.$(OBJEXT) ss_local-jconf.$(OBJEXT) \
 	$(am__objects_8)
 am__objects_10 = ss_local-crypto.$(OBJEXT) ss_local-aead.$(OBJEXT) \
 	ss_local-stream.$(OBJEXT) ss_local-ppbloom.$(OBJEXT) \
-	ss_local-base64.$(OBJEXT)
+	ss_local-base64.$(OBJEXT) ss_local-noencrypt.$(OBJEXT)
 am__objects_11 = ss_local-plugin.$(OBJEXT)
 am__objects_12 = ss_local-http.$(OBJEXT) ss_local-tls.$(OBJEXT)
 am__objects_13 = ss_local-rule.$(OBJEXT) ss_local-acl.$(OBJEXT)
@@ -227,10 +230,10 @@ ss_manager_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am__ss_redir_SOURCES_DIST = utils.c jconf.c json.c netutils.c cache.c \
 	udprelay.c redir.c crypto.c aead.c stream.c ppbloom.c base64.c \
-	plugin.c
+	noencrypt.c plugin.c
 am__objects_14 = ss_redir-crypto.$(OBJEXT) ss_redir-aead.$(OBJEXT) \
 	ss_redir-stream.$(OBJEXT) ss_redir-ppbloom.$(OBJEXT) \
-	ss_redir-base64.$(OBJEXT)
+	ss_redir-base64.$(OBJEXT) ss_redir-noencrypt.$(OBJEXT)
 am__objects_15 = ss_redir-plugin.$(OBJEXT)
 @BUILD_REDIRECTOR_TRUE@am_ss_redir_OBJECTS = ss_redir-utils.$(OBJEXT) \
 @BUILD_REDIRECTOR_TRUE@	ss_redir-jconf.$(OBJEXT) \
@@ -247,7 +250,8 @@ ss_redir_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am__ss_server_SOURCES_DIST = resolv.c server.c utils.c jconf.c json.c \
 	udprelay.c cache.c netutils.c winsock.c crypto.c aead.c \
-	stream.c ppbloom.c base64.c plugin.c http.c tls.c rule.c acl.c
+	stream.c ppbloom.c base64.c noencrypt.c plugin.c http.c tls.c \
+	rule.c acl.c
 @BUILD_WINCOMPAT_TRUE@am__objects_16 = ss_server-winsock.$(OBJEXT)
 am__objects_17 = ss_server-utils.$(OBJEXT) ss_server-jconf.$(OBJEXT) \
 	ss_server-json.$(OBJEXT) ss_server-udprelay.$(OBJEXT) \
@@ -255,7 +259,7 @@ am__objects_17 = ss_server-utils.$(OBJEXT) ss_server-jconf.$(OBJEXT) \
 	$(am__objects_16)
 am__objects_18 = ss_server-crypto.$(OBJEXT) ss_server-aead.$(OBJEXT) \
 	ss_server-stream.$(OBJEXT) ss_server-ppbloom.$(OBJEXT) \
-	ss_server-base64.$(OBJEXT)
+	ss_server-base64.$(OBJEXT) ss_server-noencrypt.$(OBJEXT)
 am__objects_19 = ss_server-plugin.$(OBJEXT)
 am__objects_20 = ss_server-http.$(OBJEXT) ss_server-tls.$(OBJEXT)
 am__objects_21 = ss_server-rule.$(OBJEXT) ss_server-acl.$(OBJEXT)
@@ -269,7 +273,7 @@ ss_server_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 am__ss_tunnel_SOURCES_DIST = tunnel.c utils.c jconf.c json.c \
 	udprelay.c cache.c netutils.c winsock.c crypto.c aead.c \
-	stream.c ppbloom.c base64.c plugin.c
+	stream.c ppbloom.c base64.c noencrypt.c plugin.c
 @BUILD_WINCOMPAT_TRUE@am__objects_22 = ss_tunnel-winsock.$(OBJEXT)
 am__objects_23 = ss_tunnel-utils.$(OBJEXT) ss_tunnel-jconf.$(OBJEXT) \
 	ss_tunnel-json.$(OBJEXT) ss_tunnel-udprelay.$(OBJEXT) \
@@ -277,7 +281,7 @@ am__objects_23 = ss_tunnel-utils.$(OBJEXT) ss_tunnel-jconf.$(OBJEXT) \
 	$(am__objects_22)
 am__objects_24 = ss_tunnel-crypto.$(OBJEXT) ss_tunnel-aead.$(OBJEXT) \
 	ss_tunnel-stream.$(OBJEXT) ss_tunnel-ppbloom.$(OBJEXT) \
-	ss_tunnel-base64.$(OBJEXT)
+	ss_tunnel-base64.$(OBJEXT) ss_tunnel-noencrypt.$(OBJEXT)
 am__objects_25 = ss_tunnel-plugin.$(OBJEXT)
 am_ss_tunnel_OBJECTS = ss_tunnel-tunnel.$(OBJEXT) $(am__objects_23) \
 	$(am__objects_24) $(am__objects_25)
@@ -501,7 +505,8 @@ crypto_src = crypto.c \
              aead.c \
              stream.c \
              ppbloom.c \
-             base64.c
+             base64.c \
+             noencrypt.c
 
 plugin_src = plugin.c
 common_src = utils.c jconf.c json.c udprelay.c cache.c netutils.c \
@@ -756,6 +761,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-json.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-local.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-netutils.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-noencrypt.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-plugin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-ppbloom.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libshadowsocks_libev_la-rule.Plo@am__quote@
@@ -774,6 +780,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-json.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-local.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-netutils.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-noencrypt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-plugin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-ppbloom.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_local-rule.Po@am__quote@
@@ -794,6 +801,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-jconf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-json.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-netutils.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-noencrypt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-plugin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-ppbloom.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_redir-redir.Po@am__quote@
@@ -809,6 +817,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-jconf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-json.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-netutils.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-noencrypt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-plugin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-ppbloom.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_server-resolv.Po@am__quote@
@@ -826,6 +835,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-jconf.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-json.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-netutils.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-noencrypt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-plugin.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-ppbloom.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ss_tunnel-stream.Po@am__quote@
@@ -948,6 +958,13 @@ libshadowsocks_libev_la-base64.lo: base64.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='base64.c' object='libshadowsocks_libev_la-base64.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libshadowsocks_libev_la_CFLAGS) $(CFLAGS) -c -o libshadowsocks_libev_la-base64.lo `test -f 'base64.c' || echo '$(srcdir)/'`base64.c
+
+libshadowsocks_libev_la-noencrypt.lo: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libshadowsocks_libev_la_CFLAGS) $(CFLAGS) -MT libshadowsocks_libev_la-noencrypt.lo -MD -MP -MF $(DEPDIR)/libshadowsocks_libev_la-noencrypt.Tpo -c -o libshadowsocks_libev_la-noencrypt.lo `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libshadowsocks_libev_la-noencrypt.Tpo $(DEPDIR)/libshadowsocks_libev_la-noencrypt.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='libshadowsocks_libev_la-noencrypt.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libshadowsocks_libev_la_CFLAGS) $(CFLAGS) -c -o libshadowsocks_libev_la-noencrypt.lo `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
 
 libshadowsocks_libev_la-plugin.lo: plugin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libshadowsocks_libev_la_CFLAGS) $(CFLAGS) -MT libshadowsocks_libev_la-plugin.lo -MD -MP -MF $(DEPDIR)/libshadowsocks_libev_la-plugin.Tpo -c -o libshadowsocks_libev_la-plugin.lo `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
@@ -1165,6 +1182,20 @@ ss_local-base64.obj: base64.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='base64.c' object='ss_local-base64.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_local_CFLAGS) $(CFLAGS) -c -o ss_local-base64.obj `if test -f 'base64.c'; then $(CYGPATH_W) 'base64.c'; else $(CYGPATH_W) '$(srcdir)/base64.c'; fi`
+
+ss_local-noencrypt.o: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_local_CFLAGS) $(CFLAGS) -MT ss_local-noencrypt.o -MD -MP -MF $(DEPDIR)/ss_local-noencrypt.Tpo -c -o ss_local-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_local-noencrypt.Tpo $(DEPDIR)/ss_local-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_local-noencrypt.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_local_CFLAGS) $(CFLAGS) -c -o ss_local-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+
+ss_local-noencrypt.obj: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_local_CFLAGS) $(CFLAGS) -MT ss_local-noencrypt.obj -MD -MP -MF $(DEPDIR)/ss_local-noencrypt.Tpo -c -o ss_local-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_local-noencrypt.Tpo $(DEPDIR)/ss_local-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_local-noencrypt.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_local_CFLAGS) $(CFLAGS) -c -o ss_local-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
 
 ss_local-plugin.o: plugin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_local_CFLAGS) $(CFLAGS) -MT ss_local-plugin.o -MD -MP -MF $(DEPDIR)/ss_local-plugin.Tpo -c -o ss_local-plugin.o `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
@@ -1474,6 +1505,20 @@ ss_redir-base64.obj: base64.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_redir_CFLAGS) $(CFLAGS) -c -o ss_redir-base64.obj `if test -f 'base64.c'; then $(CYGPATH_W) 'base64.c'; else $(CYGPATH_W) '$(srcdir)/base64.c'; fi`
 
+ss_redir-noencrypt.o: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_redir_CFLAGS) $(CFLAGS) -MT ss_redir-noencrypt.o -MD -MP -MF $(DEPDIR)/ss_redir-noencrypt.Tpo -c -o ss_redir-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_redir-noencrypt.Tpo $(DEPDIR)/ss_redir-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_redir-noencrypt.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_redir_CFLAGS) $(CFLAGS) -c -o ss_redir-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+
+ss_redir-noencrypt.obj: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_redir_CFLAGS) $(CFLAGS) -MT ss_redir-noencrypt.obj -MD -MP -MF $(DEPDIR)/ss_redir-noencrypt.Tpo -c -o ss_redir-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_redir-noencrypt.Tpo $(DEPDIR)/ss_redir-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_redir-noencrypt.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_redir_CFLAGS) $(CFLAGS) -c -o ss_redir-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
+
 ss_redir-plugin.o: plugin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_redir_CFLAGS) $(CFLAGS) -MT ss_redir-plugin.o -MD -MP -MF $(DEPDIR)/ss_redir-plugin.Tpo -c -o ss_redir-plugin.o `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_redir-plugin.Tpo $(DEPDIR)/ss_redir-plugin.Po
@@ -1683,6 +1728,20 @@ ss_server-base64.obj: base64.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='base64.c' object='ss_server-base64.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_server_CFLAGS) $(CFLAGS) -c -o ss_server-base64.obj `if test -f 'base64.c'; then $(CYGPATH_W) 'base64.c'; else $(CYGPATH_W) '$(srcdir)/base64.c'; fi`
+
+ss_server-noencrypt.o: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_server_CFLAGS) $(CFLAGS) -MT ss_server-noencrypt.o -MD -MP -MF $(DEPDIR)/ss_server-noencrypt.Tpo -c -o ss_server-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_server-noencrypt.Tpo $(DEPDIR)/ss_server-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_server-noencrypt.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_server_CFLAGS) $(CFLAGS) -c -o ss_server-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+
+ss_server-noencrypt.obj: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_server_CFLAGS) $(CFLAGS) -MT ss_server-noencrypt.obj -MD -MP -MF $(DEPDIR)/ss_server-noencrypt.Tpo -c -o ss_server-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_server-noencrypt.Tpo $(DEPDIR)/ss_server-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_server-noencrypt.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_server_CFLAGS) $(CFLAGS) -c -o ss_server-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
 
 ss_server-plugin.o: plugin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_server_CFLAGS) $(CFLAGS) -MT ss_server-plugin.o -MD -MP -MF $(DEPDIR)/ss_server-plugin.Tpo -c -o ss_server-plugin.o `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
@@ -1935,6 +1994,20 @@ ss_tunnel-base64.obj: base64.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='base64.c' object='ss_tunnel-base64.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_tunnel_CFLAGS) $(CFLAGS) -c -o ss_tunnel-base64.obj `if test -f 'base64.c'; then $(CYGPATH_W) 'base64.c'; else $(CYGPATH_W) '$(srcdir)/base64.c'; fi`
+
+ss_tunnel-noencrypt.o: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_tunnel_CFLAGS) $(CFLAGS) -MT ss_tunnel-noencrypt.o -MD -MP -MF $(DEPDIR)/ss_tunnel-noencrypt.Tpo -c -o ss_tunnel-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_tunnel-noencrypt.Tpo $(DEPDIR)/ss_tunnel-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_tunnel-noencrypt.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_tunnel_CFLAGS) $(CFLAGS) -c -o ss_tunnel-noencrypt.o `test -f 'noencrypt.c' || echo '$(srcdir)/'`noencrypt.c
+
+ss_tunnel-noencrypt.obj: noencrypt.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_tunnel_CFLAGS) $(CFLAGS) -MT ss_tunnel-noencrypt.obj -MD -MP -MF $(DEPDIR)/ss_tunnel-noencrypt.Tpo -c -o ss_tunnel-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/ss_tunnel-noencrypt.Tpo $(DEPDIR)/ss_tunnel-noencrypt.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='noencrypt.c' object='ss_tunnel-noencrypt.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_tunnel_CFLAGS) $(CFLAGS) -c -o ss_tunnel-noencrypt.obj `if test -f 'noencrypt.c'; then $(CYGPATH_W) 'noencrypt.c'; else $(CYGPATH_W) '$(srcdir)/noencrypt.c'; fi`
 
 ss_tunnel-plugin.o: plugin.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ss_tunnel_CFLAGS) $(CFLAGS) -MT ss_tunnel-plugin.o -MD -MP -MF $(DEPDIR)/ss_tunnel-plugin.Tpo -c -o ss_tunnel-plugin.o `test -f 'plugin.c' || echo '$(srcdir)/'`plugin.c
